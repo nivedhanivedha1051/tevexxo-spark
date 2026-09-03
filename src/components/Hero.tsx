@@ -72,16 +72,41 @@ function Stat({ value, label }: { value: string; label: string }) {
 }
 
 function SpinningHeroMark() {
+  const badges = ['React', 'Next.js', 'Express.js', 'MongoDB', 'MySQL', 'TypeScript', 'CSS', 'HTML'];
   return (
     <div className="relative h-[320px] w-[320px] sm:h-[400px] sm:w-[400px]">
+      <style>{`
+        .orbit-badges { --orbit-radius: 158px; }
+        @media (min-width: 640px) { .orbit-badges { --orbit-radius: 198px; } }
+        .orbit-badges, .orbit-badges * { pointer-events: none; }
+        @keyframes orbit-badge {
+          from { transform: translate(-50%, -50%) rotate(var(--orbit-angle)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-angle))); }
+          to { transform: translate(-50%, -50%) rotate(calc(var(--orbit-angle) + 360deg)) translateX(var(--orbit-radius)) rotate(calc(-1 * var(--orbit-angle) - 360deg)); }
+        }
+      `}</style>
+
       <div className="absolute inset-0 rounded-full bg-tevexxo-orange/20 blur-3xl animate-pulse-glow" />
 
       <div className="absolute inset-0 rounded-full border-2 border-tevexxo-orange/70 neon-orange animate-spin-slow">
         <div className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-tevexxo-orange neon-orange" />
         <div className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-tevexxo-orange neon-orange" />
-        <div className="absolute left-full top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-tevexxo-orange/50 bg-tevexxo-black-soft px-2.5 py-1 text-[10px] font-semibold text-tevexxo-orange neon-orange">
-          Projects
-        </div>
+      </div>
+
+      <div className="orbit-badges absolute inset-0">
+        {badges.map((label, i) => (
+          <div
+            key={label}
+            className="absolute left-1/2 top-1/2"
+            style={{
+              ['--orbit-angle' as string]: `${i * 45 + 22.5}deg`,
+              animation: 'orbit-badge 18s linear infinite',
+            }}
+          >
+            <span className="inline-block rounded-full border border-tevexxo-orange/50 bg-tevexxo-black-soft px-2.5 py-1 text-[10px] font-semibold text-tevexxo-orange neon-orange whitespace-nowrap">
+              {label}
+            </span>
+          </div>
+        ))}
       </div>
 
       <div className="absolute inset-10 rounded-full border border-dashed border-tevexxo-orange/50 animate-spin-slow-rev">

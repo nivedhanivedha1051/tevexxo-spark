@@ -12,8 +12,6 @@ const LINKS = [
   { label: 'Why Tevexxo', to: '/why-tevexxo' as const },
   { label: 'About Us', href: '#about' },
   { label: 'Contact', to: '/contact' as const },
-  { label: 'Courses', href: '#courses' },
-  { label: 'Programs', href: '#programs' },
 ];
 
 export default function TopNavbar() {
