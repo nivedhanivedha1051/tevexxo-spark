@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
+import SiteLayout from '@/components/SiteLayout';
+import Contact from '@/components/Contact';
+export const Route = createFileRoute('/contact')({ head: () => ({ meta: [{ title: 'Contact — Tevexxo' }, { name: 'description', content: 'Contact Tevexxo about a question, project, or partnership.' }, { property: 'og:title', content: 'Contact — Tevexxo' }, { property: 'og:description', content: 'Contact Tevexxo about a question, project, or partnership.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }), component: () => <SiteLayout><Contact /></SiteLayout> });
