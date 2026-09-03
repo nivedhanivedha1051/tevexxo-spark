@@ -50,6 +50,7 @@ export default function CursorEffect() {
       for (let i = 1; i < points.length; i += 1) {
         const point = points[i];
         const previous = points[i - 1];
+        if (!point || !previous) continue;
         const alpha = Math.max(0, (1 - point.age / 48) * 0.22);
         context.strokeStyle = `rgba(255,106,0,${alpha})`;
         context.lineWidth = 0.75;
@@ -60,6 +61,7 @@ export default function CursorEffect() {
 
         if (i > 2 && i % 3 === 0) {
           const connected = points[i - 3];
+          if (!connected) continue;
           context.beginPath();
           context.moveTo(connected.x, connected.y);
           context.lineTo(point.x, point.y);
