@@ -1,24 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
+import SiteLayout from '@/components/SiteLayout';
+import Hero from '@/components/Hero';
+import Courses from '@/components/Courses';
+import About from '@/components/About';
+import Programs from '@/components/Programs';
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: 'Tevexxo — Build, Learn, Accelerate' },
+    { name: 'description', content: 'Hands-on courses, real-world projects, and next-generation products for future innovators.' },
+    { property: 'og:title', content: 'Tevexxo — Build, Learn, Accelerate' },
+    { property: 'og:description', content: 'Hands-on courses, real-world projects, and next-generation products for future innovators.' },
+    { property: 'og:type', content: 'website' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+  ] }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <SiteLayout>
+      <Hero />
+      <Courses />
+      <About />
+      <Programs />
+    </SiteLayout>
   );
 }

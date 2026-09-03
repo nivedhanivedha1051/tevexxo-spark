@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
+import SiteLayout from '@/components/SiteLayout';
+import WhyTevexxo from '@/components/WhyTevexxo';
+export const Route = createFileRoute('/why-tevexxo')({ head: () => ({ meta: [{ title: 'Why Tevexxo' }, { name: 'description', content: 'See what makes the Tevexxo learning experience different.' }, { property: 'og:title', content: 'Why Tevexxo' }, { property: 'og:description', content: 'See what makes the Tevexxo learning experience different.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }), component: () => <SiteLayout><WhyTevexxo /></SiteLayout> });

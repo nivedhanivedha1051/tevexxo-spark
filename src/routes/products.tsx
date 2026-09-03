@@ -1,0 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
+import SiteLayout from '@/components/SiteLayout';
+import Products from '@/components/Products';
+export const Route = createFileRoute('/products')({ head: () => ({ meta: [{ title: 'Products — Tevexxo' }, { name: 'description', content: 'Explore next-generation products from Tevexxo.' }, { property: 'og:title', content: 'Products — Tevexxo' }, { property: 'og:description', content: 'Explore next-generation products from Tevexxo.' }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }), component: () => <SiteLayout><Products /></SiteLayout> });
